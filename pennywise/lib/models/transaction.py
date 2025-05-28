@@ -5,7 +5,7 @@ class Transaction:
         self.amount = amount
         self.category = category
         self.date = date
-        self.type = type 
+        self.type = type
         self.budget_id = budget_id
 
     @staticmethod

@@ -1,9 +1,9 @@
 import sqlite3
 
 class Budget:
-    def __init__(self, category, limit):
+    def __init__(self, category, spending_limit):
         self.category = category
-        self.limit = limit
+        self.spending_limit = spending_limit
 
     @staticmethod
     def create_table():
@@ -13,7 +13,7 @@ class Budget:
         CREATE TABLE IF NOT EXISTS budgets (
             id INTEGER PRIMARY KEY,
             category TEXT UNIQUE NOT NULL,
-            limit REAL NOT NULL
+            spending_limit REAL NOT NULL
         )
         """)
         conn.commit()
@@ -22,7 +22,7 @@ class Budget:
     def save(self):
         conn = sqlite3.connect("database.db")
         cursor = conn.cursor()
-        cursor.execute("INSERT INTO budgets (category, limit) VALUES (?, ?)", (self.category, self.limit))
+        cursor.execute("INSERT INTO budgets (category, spending_limit) VALUES (?, ?)", (self.category, self.spending_limit))
         conn.commit()
         conn.close()
     
